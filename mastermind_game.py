@@ -77,17 +77,17 @@ class MastermindGame(object):
         while True:
             self.__clear()
 
-            print "Mastermind"
-            print "-" * self.width
-            print "[S] Single-player (PvC)"
-            print "[M] Multiplayer (PvP)"
-            print "[D] Duel (CvC)"
-            print "[L] Load"
-            print "[I] Instructions"
-            print "[O] Options"
-            print "[Q] Quit"
-            print "-" * self.width
-            print
+            print ("Mastermind")
+            print ("-" * self.width)
+            print ("[S] Single-player (PvC)")
+            print ("[M] Multiplayer (PvP)")
+            print ("[D] Duel (CvC)")
+            print ("[L] Load")
+            print ("[I] Instructions")
+            print ("[O] Options")
+            print ("[Q] Quit")
+            print ("-" * self.width)
+            print()
 
             mode = None
             while mode not in self.modes:  # Prompt for mode
@@ -104,31 +104,31 @@ class MastermindGame(object):
         """Instructions screen."""
         self.__clear()
 
-        print "Mastermind : Instructions"
-        print "-" * self.width
-        print "Mastermind is played by two players: the codemaker and the codebreaker."
-        print "It is played in a pre-agreed number of games consisting of 12 turns each."
-        print
-        print "The codemaker forms a secret pattern which the codebreaker must deduce within a game."
-        print "The secret pattern consists of 3-8 pegs, allowing duplicates, each of which can be of 3-8 colours."
-        print "The available colours are: red, green, blue, cyan, magenta, yellow, orange and purple."
-        print
-        print "The codemaker provides feedback on the codebreaker's guesses by:"
-        print "    - placing a black key code for each code which has the correct colour and position"
-        print "    - placing a white key code for each code which has the correct colour but wrong position"
-        print
-        print "The codemaker gains a point for each guess made by the codebreaker."
-        print "The codemaker gains an extra point if the codebreaker fails to solve the pattern."
-        print "The players then take turns playing as the codemaker and codebreaker."
-        print
-        print "The player with the most points wins."
-        print
-        print "Colours can be specified by entering the first character of each colour."
-        print "    Example > Guess: rgby"
-        print
-        print "For a given game played with n pegs, if more than n colours is entered, only the first n are taken as the guess."
-        print "-" * self.width
-        print
+        print ("Mastermind : Instructions")
+        print ("-" * self.width)
+        print ("Mastermind is played by two players: the codemaker and the codebreaker.")
+        print ("It is played in a pre-agreed number of games consisting of 12 turns each.")
+        print()
+        print ("The codemaker forms a secret pattern which the codebreaker must deduce within a game.")
+        print ("The secret pattern consists of 3-8 pegs, allowing duplicates, each of which can be of 3-8 colours.")
+        print ("The available colours are: red, green, blue, cyan, magenta, yellow, orange and purple.")
+        print()
+        print ("The codemaker provides feedback on the codebreaker's guesses by:")
+        print ("    - placing a black key code for each code which has the correct colour and position")
+        print ("    - placing a white key code for each code which has the correct colour but wrong position")
+        print()
+        print ("The codemaker gains a point for each guess made by the codebreaker.")
+        print ("The codemaker gains an extra point if the codebreaker fails to solve the pattern.")
+        print ("The players then take turns playing as the codemaker and codebreaker.")
+        print()
+        print ("The player with the most points wins.")
+        print()
+        print ("Colours can be specified by entering the first character of each colour.")
+        print ("    Example > Guess: rgby")
+        print()
+        print ("For a given game played with n pegs, if more than n colours is entered, only the first n are taken as the guess.")
+        print ("-" * self.width)
+        print()
 
         sys.stdout.flush()
         os.system('read -rs -n 1')  # Exit on key press
@@ -139,14 +139,14 @@ class MastermindGame(object):
         while True:
             self.__clear()
 
-            print "Mastermind : Options"
-            print "-" * self.width
-            print "[G] Number of games   (must be even, default=2) : %d" % self.games
-            print "[P] Number of pegs    (3-8, default=4)          : %d" % self.length
-            print "[C] Number of colours (3-8, default=6)          : %d" % self.colours
-            print "[B] Back"
-            print "-" * self.width
-            print
+            print ("Mastermind : Options")
+            print ("-" * self.width)
+            print ("[G] Number of games   (must be even, default=2) : %d" % self.games)
+            print ("[P] Number of pegs    (3-8, default=4)          : %d" % self.length)
+            print ("[C] Number of colours (3-8, default=6)          : %d" % self.colours)
+            print ("[B] Back")
+            print ("-" * self.width)
+            print()
 
             setting = None
             settings = self.settings.keys()
@@ -183,7 +183,7 @@ class MastermindGame(object):
     def quit(self):
         """Quit game."""
         self.__clear()
-        print "Thank you for playing!"
+        print ("Thank you for playing!")
         sys.exit()
 
 
@@ -210,7 +210,7 @@ class MastermindGame(object):
         if saved_games:
             for i, saved_name in enumerate(saved_names):
                 saved_names[i] = saved_name.rstrip('.sav')
-            print "Saved games found:  %s" % '  '.join(saved_names)
+            print ("Saved games found:  %s" % '  '.join(saved_names))
  
         save_name = None
         while not save_name:
@@ -245,14 +245,14 @@ class MastermindGame(object):
         """Load game screen."""
         self.__clear()
 
-        print "Mastermind"
-        print "-" * self.width
-        print "Searching saved games directory...\n"
+        print ("Mastermind")
+        print ("-" * self.width)
+        print ("Searching saved games directory...\n")
 
         # Get saved games
         saved_games = os.listdir(self.save_dir)
         if not saved_games:
-            print "No saved games found. Aborting..."
+            print ("No saved games found. Aborting...")
             self.__pause(self.pause)
             return
 
@@ -260,13 +260,13 @@ class MastermindGame(object):
         saved_names = list(saved_games)
         for i, saved_name in enumerate(saved_names):
             saved_names[i] = saved_name.rstrip('.sav')
-        print "Saved games found:  %s\n" % '  '.join(saved_names)
+        print ("Saved games found:  %s\n" % '  '.join(saved_names))
 
         load_name = None
         while load_name not in saved_names:
             try:
                 # Prompt for load name
-                load_name = raw_input("Enter the name of the save you want to load: ").lower()
+                load_name = input("Enter the name of the save you want to load: ").lower()
                 if load_name == '':  # Cancel
                     return
             except EOFError:
@@ -283,7 +283,7 @@ class MastermindGame(object):
         try:
             save_file = open(save_name, 'w')
         except IOError:
-            print "Game cannot be saved. Aborting...\n"
+            print ("Game cannot be saved. Aborting...\n")
             return
 
         try:
@@ -304,10 +304,10 @@ class MastermindGame(object):
             pickle.dump(codebreaker, save_file)
 
         except pickle.PicklingError:
-            print "Game cannot be saved. Aborting...\n"
+            print ("Game cannot be saved. Aborting...\n")
 
         else:
-            print "Game saved successfully.\n"
+            print ("Game saved successfully.\n")
 
         save_file.close()
 
@@ -317,7 +317,7 @@ class MastermindGame(object):
         try:
             load_file = open(load_name, 'r')
         except IOError:
-            print "Game cannot be loaded. Aborting..."
+            print ("Game cannot be loaded. Aborting...")
             self.__pause(self.pause)
             return
 
@@ -339,7 +339,7 @@ class MastermindGame(object):
             codebreaker = pickle.load(load_file)
 
         except pickle.UnpicklingError:
-            print "Game cannot be loaded. Aborting..."
+            print ("Game cannot be loaded. Aborting...")
             self.__pause(self.pause)
             load_file.close()
 
@@ -354,7 +354,7 @@ class MastermindGame(object):
         The header shown in the secret pattern choice screen.
 
         """
-        print "Mastermind : Play : Game (%d/%d)" % (self.current_game + 1, self.games)
+        print ("Mastermind : Play : Game (%d/%d)" % (self.current_game + 1, self.games))
         print "-" * self.width
         print "%s will be playing as the codemaker" % codemaker.name
         print "%s will be playing as the codebreaker" % codebreaker.name
